@@ -59,12 +59,20 @@ xSemaphoreHandle sem;
 
 /* A software timer that is started from the tick hook. */
 static TimerHandle_t xTimer = NULL;
+uint16_t sgn[] =
+{
+    #include "sgn.h" 
 
+<<<<<<< HEAD
+};
+
+=======
 uint16_t sgn[] =
 {
     #include "sgn.h" 
 
 };
+>>>>>>> bdfd1321392409ea6caed284abf5fc461dd8ccce
 enum
 {
     ACUMULAR, PROMEDIAR
@@ -153,8 +161,14 @@ const TickType_t xTimerPeriod = mainTIMER_SEND_FREQUENCY_MS;
 static void ADC_Task(void* pvParameters)
 {
     xSemaphoreTake(sem, portMAX_DELAY);
+<<<<<<< HEAD
+    printf("---------- Ejecutar maquina de estado-----------------");
+    maquina_estado();
+    xTimerStart(xTimer, portMAX_DELAY);
+=======
     printf("-----------Ejecucion Maquina de Estado ---------------");
     maquina_estado();
+>>>>>>> bdfd1321392409ea6caed284abf5fc461dd8ccce
     xSemaphoreGive(sem);
 }
 static void prvADC_Task_TimerCallback(TimerHandle_t xTimerHandle)
@@ -167,10 +181,83 @@ static void prvADC_Task_TimerCallback(TimerHandle_t xTimerHandle)
     xSemaphoreGive(sem);
 }
 
-
 static void maquina_estado()
 {
     uint8_t estado = ACUMULAR; // por default arranco con el acumulador
+
+<<<<<<< HEAD
+    printf("--------inicio de programa------- \n");
+
+    while (1)
+    {
+
+        switch (estado)
+        {
+
+        case ACUMULAR:
+            Acumular();
+            if (llamados >= N)
+            {
+
+                estado = PROMEDIAR;
+
+            }
+            else
+            {
+                estado = ACUMULAR;
+            }
+            break;
+
+        case PROMEDIAR:
+            Promediar();
+            estado = ACUMULAR;
+            break;
+
+
+        }
+
+    }
+
+    printf("------ Fin del programa------");
+
+    return 0;
+}
+
+static void Acumular()
+{
+
+    Acumulador = Acumulador + sgn[llamados];
+    llamados++;
+    return;
+}
+
+
+
+static void Promediar()
+{
+
+    float Prom = Acumulador / N;
+    printf("--------- PROMEDIO ----------");
+
+    printf("%f\n", Prom);
+
+    Acumulador = 0;
+    llamados = 0;
+
+    printf("--------Elija un Distinto N------- \n");
+    scanf("%d", &N);
+    if (N > 64)
+    {
+        N = 0; // como se encuentra fuera del largo seteo un valor por default 
+    }
+
+    return;
+}
+=======
+static void maquina_estado()
+{
+    uint8_t estado = ACUMULAR; // por default arranco con el acumulador
+>>>>>>> bdfd1321392409ea6caed284abf5fc461dd8ccce
 
     printf("--------inicio de programa------- \n");
 
