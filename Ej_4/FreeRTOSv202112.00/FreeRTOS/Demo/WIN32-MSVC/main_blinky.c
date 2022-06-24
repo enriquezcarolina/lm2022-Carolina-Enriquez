@@ -15,6 +15,7 @@ desbloquearse en el callback del timer
 #include "task.h"
 #include "timers.h"
 #include "semphr.h"
+#include "MaqEst.h"
 
 /* Priorities at which the tasks are created. */
 //#define mainQUEUE_RECEIVE_TASK_PRIORITY		( tskIDLE_PRIORITY + 2 )
@@ -60,6 +61,7 @@ xSemaphoreHandle sem;
 /* A software timer that is started from the tick hook. */
 static TimerHandle_t xTimer = NULL;
 
+
 uint16_t sgn[] =
 {
     #include "sgn.h" 
@@ -78,6 +80,7 @@ static void maquina_estado();
 static uint32_t llamados = 0;
 static uint32_t Acumulador = 0;
 uint8_t N = 5;
+
 
 void main_blinky( void )
 {

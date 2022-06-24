@@ -1,1 +1,0 @@
-C:\Users\enriq\Downloads\lm2022-Carolina-Enriquez\Ej_4\FreeRTOSv202112.00\FreeRTOS\Demo\WIN32-MSVC\Debug\RTOSDemo.exe
