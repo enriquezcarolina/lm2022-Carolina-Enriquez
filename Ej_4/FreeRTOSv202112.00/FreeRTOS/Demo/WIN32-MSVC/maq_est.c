@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
-#include "maq_est.h"
+
 
 
 uint16_t sgn[] =
@@ -21,6 +21,7 @@ enum
 
 static void Acumular();
 static void Promediar();
+static void maquina_estado();
 
 static uint32_t llamados = 0;
 static uint32_t Acumulador = 0;
